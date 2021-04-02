@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        style="@style/Style_Toolbar"-->
+<!--        tools:ignore="MissingConstraints">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/toolbartext"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_marginStart="25dp"-->
+<!--            android:layout_marginEnd="25dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            android:text=""-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--            android:textColor="#ffffff"-->
+<!--            android:gravity="center_vertical" />-->
+
+
+<!--    </androidx.appcompat.widget.Toolbar>-->
+
+
+    <LinearLayout
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        app:ignore="MissingConstraints,NamespaceTypo">
+<!--        <include-->
+<!--            layout="@layout/app_bar_navigation_drawer_home_fragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content" />-->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabGravity="fill"
+            card_view:tabMode="fixed"
+            android:background="@color/colorPrimary"
+            card_view:tabIndicatorColor="#ffffff"
+            card_view:tabTextColor="#ffffff"/>
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0.5dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:background="#C9C9C9"-->
+<!--            />-->
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
+        </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
+
+
+
+</LinearLayout>

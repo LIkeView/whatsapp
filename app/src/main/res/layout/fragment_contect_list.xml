@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto">
+
+<!--    <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--        android:id="@+id/shimmer_view_container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:orientation="vertical"-->
+<!--        shimmer:shimmer_duration="800"-->
+<!--        >-->
+
+<!--        &lt;!&ndash; Adding 7 rows of placeholders &ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+<!--            <include layout="@layout/data_placeholder_layout" />-->
+<!--            <include layout="@layout/data_placeholder_layout" />-->
+<!--            <include layout="@layout/data_placeholder_layout" />-->
+<!--            <include layout="@layout/data_placeholder_layout" />-->
+<!--            <include layout="@layout/data_placeholder_layout" />-->
+<!--            <include layout="@layout/data_placeholder_layout" />-->
+<!--            <include layout="@layout/data_placeholder_layout" />-->
+<!--        </LinearLayout>-->
+
+<!--    </com.facebook.shimmer.ShimmerFrameLayout>-->
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginBottom="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="Search Here"
+                android:iconifiedByDefault="false"
+                android:layout_alignParentTop="true"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:background="#c9c9c9"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_marginLeft="5dp"
+                android:id="@+id/editTextEnterText"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/edit_text_shape"
+                android:layout_height="wrap_content"
+                android:hint="     message"
+                />
+            <Button
+                android:id="@+id/OpenButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:layout_marginLeft="3dp"
+                android:background="@drawable/icon_select_file"/>
+            <Button
+                android:clickable="true"
+                android:id="@+id/SandButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/icon_send"/>
+
+        </LinearLayout>
+
+        
+        
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>
