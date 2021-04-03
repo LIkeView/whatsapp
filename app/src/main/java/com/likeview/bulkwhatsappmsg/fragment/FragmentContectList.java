@@ -1,6 +1,7 @@
 package com.likeview.bulkwhatsappmsg.fragment;
 
 import android.Manifest;
+import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
@@ -16,6 +17,7 @@ import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -58,6 +60,7 @@ import java.util.TimerTask;
 import static android.Manifest.permission.READ_CALL_LOG;
 import static android.Manifest.permission.READ_CONTACTS;
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 
 
 public class FragmentContectList extends Fragment {
@@ -187,9 +190,17 @@ public class FragmentContectList extends Fragment {
 //                    startActivity(intent);
                     Log.d( "URI::1::","Uri 1 :" +path) ;
                     Log.d( "URI::2::","Uri 2 :" +stringImage) ;
+                    isAccessibilitySettingsOn(getContext(),MySMSservice.class);
 //
-                    MySMSservice.startActionWHATSAPP(getActivity(),editTextEnterText.getText().toString().trim(),path,
-                            "1",arrayList,false);
+//                    if (!isAccessibilitySettingsOn(getContext(),MySMSservice.class)) {
+//                        startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+//                    }
+//                    else{
+//                        MySMSservice.startActionWHATSAPP(getActivity(),editTextEnterText.getText().toString().trim(),path,
+//                                "1",arrayList,false);
+//                    }
+
+
                 }else {
                     Toast.makeText(getActivity(), "Whats app not installed on your device", Toast.LENGTH_SHORT).show();
                 }
@@ -457,6 +468,37 @@ public class FragmentContectList extends Fragment {
             app_installed = false;
         }
         return app_installed;
+    }
+
+    private boolean isAccessibilitySettingsOn(Context mContext, Class<MySMSservice> clazz) {
+        int accessibilityEnabled = 0;
+        final String service = getContext().getPackageName () + "/" + clazz.getCanonicalName ();
+        try {
+            accessibilityEnabled = Settings.Secure.getInt (getContext().getApplicationContext ().getContentResolver (), Settings.Secure.ACCESSIBILITY_ENABLED);
+        } catch (Settings.SettingNotFoundException ignored) {  }
+
+        TextUtils.SimpleStringSplitter colonSplitter = new TextUtils.SimpleStringSplitter (':');
+
+        if (accessibilityEnabled == 1) {
+            MySMSservice.startActionWHATSAPP(getActivity(), editTextEnterText.getText().toString().trim(), path,
+                    "1", arrayList, false);
+//            String settingValue = Settings.Secure.getString (getContext().getApplicationContext ().getContentResolver (), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+//            if (settingValue != null) {
+//                colonSplitter.setString (settingValue);
+//                while (colonSplitter.hasNext ()) {
+//                    String accessibilityService = colonSplitter.next ();
+//
+//                    if (accessibilityService.equalsIgnoreCase (service)) {
+//                        return true;
+//                    }
+//                }
+//            }
+        }
+        else{
+            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+        }
+
+        return false;
     }
 
 
